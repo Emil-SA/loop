@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        let reversedWord = "";
+        let word = "";
+          drawView()
+
+        function drawView(){
+            document.getElementById('app').innerHTML = /*HTML*/ `
+            <input onchange=save(this.value)>
+            <button onclick=reverse()>reverse</button>
+            <div id="saved"></div>
+            <div id="result"></div>
+            
+            `;
+            
+            
+        }
+        function save(input){
+            if(word.length == 0){
+                word = input
+                document.getElementById("saved").innerHTML = word;   
+            }else{
+                reset()
+                word = input
+                document.getElementById("saved").innerHTML = word;
+            }
+            
+            
+        }
+        function reverse(){
+            for(let counter= word.length -1; counter >= 0; counter -=1 ){
+                reversedWord += word.charAt(counter)
+            }
+            document.getElementById("result").innerHTML = reversedWord;
+        }
+        function reset(){
+            word = "";
+            reversedWord = "";
+            drawView()
+            console.log("i run");
+            
+        }
+
+        
+    </script>
+</body>
+</html>
